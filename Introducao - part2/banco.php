@@ -4,6 +4,16 @@ function exibeMensagem($mensagem){
     echo $mensagem . PHP_EOL;
 }
 
+function sacar($conta, $valor){
+    if($valor > $conta['saldo']){
+        exibeMensagem("Você não pode sacar."); 
+    }else{
+        $conta['saldo'] -= $valor;
+    }
+
+    return $conta;
+}
+
 $contasCorrentes = [
     '872.346.837-23' => [
         'titular' => 'Franklin',
@@ -19,17 +29,8 @@ $contasCorrentes = [
     ]
 ];
 
-if(500 > $contasCorrentes['289.345.738-45']['saldo']){
-    exibeMensagem("Você não pode sacar."); 
-}else{
-    $contasCorrentes['289.345.738-45']['saldo'] -= 500;
-}
-
-if(500 > $contasCorrentes['123.344.555-67']['saldo']){
-    exibeMensagem("Você não pode sacar.");
-}else{
-    $contasCorrentes['123.344.555-67']['saldo'] -= 500;
-}
+$contasCorrentes['289.345.738-45'] = sacar($contasCorrentes['289.345.738-45'], 500);
+$contasCorrentes['123.344.555-67'] = sacar($contasCorrentes['123.344.555-67'], 500);
 
 
 foreach($contasCorrentes as $cpf => $conta){

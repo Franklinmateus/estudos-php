@@ -22,7 +22,8 @@ titularLetrasMaiusculas($contasCorrentes['872.346.837-23']);
 $contasCorrentes['289.345.738-45'] = sacar($contasCorrentes['289.345.738-45'], 500);
 
 foreach($contasCorrentes as $cpf => $conta){
+    ['titular' => $titular, 'saldo' => $saldo] = $conta;
     exibeMensagem(
-        "$cpf {$conta['titular']} {$conta['saldo']}"
+        "$cpf $titular $saldo"
     );
 }

@@ -24,3 +24,8 @@ function depositar(array $conta, float $valor)
         exibeMensagem("error");
     }
 }
+
+function titularLetrasMaiusculas(array &$conta)
+{
+    $conta['titular'] = mb_strtoupper($conta['titular']);
+}
